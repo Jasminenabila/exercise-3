@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Swapi</title>
+</head>
+<body>
+    <div class="container">
+        <div class="table-responsive">
+            <h1 style="margin-bottom: 2vh;
+            margin-top: 5vh;">Data Json Table Swapi</h1>
+        <br/>
+        </div>
+    </div>
+    <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
+
+    <table class="table table-bordered table-striped" id="swapi_table" width="400">
+        <tr>
+            <th style="width: 50%">Name</th>
+            <th>Rotation_Period</th>
+            <th>Orbital-Period</th>
+            <th>Diameter</th>
+            <th>Climate</th>
+            <th>Gravity</th>
+            <th>Terrain</th>
+            <th>Surface_Water</th>
+            <th>Population</th>
+            <th>Residents</th>
+            <th>Films</th>
+            <th>Created</th>
+            <th>Edited</th>
+            <th>URL</th>
+        </tr>
+    </table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+    $.getJSON("swapi.json", function(data){
+        var swapi_data = '';
+        $.each(data, function(key, value){
+            swapi_data += '<tr>';
+            swapi_data += '<td>'+value.name+'</td>';
+            swapi_data += '<td>'+value.rotation_period+'</td>';
+            swapi_data += '<td>'+value.orbital_period+'</td>';
+            swapi_data += '<td>'+value.diameter+'</td>';
+            swapi_data += '<td>'+value.climate+'</td>';
+            swapi_data += '<td>'+value.gravity+'</td>';
+            swapi_data += '<td>'+value.terrain+'</td>';
+            swapi_data += '<td>'+value.surface_water+'</td>';
+            swapi_data += '<td>'+value.population+'</td>';
+            swapi_data += '<td>'+value.residents+'</td>';
+            swapi_data += '<td>'+value.films+'</td>';
+            swapi_data += '<td>'+value.created+'</td>';
+            swapi_data += '<td>'+value.edited+'</td>';
+            swapi_data += '<td>'+value.url+'</td>';
+            swapi_data += '</tr>';
+        });
+        $('#swapi_table').append(swapi_data);
+    });
+});
+</script>
+</body>
+</html>
